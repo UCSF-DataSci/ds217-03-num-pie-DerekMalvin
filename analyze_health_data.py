@@ -8,6 +8,7 @@ filtering, and report generation.
 """
 
 import numpy as np
+import os
 
 
 def load_data(filename):
@@ -138,6 +139,10 @@ def main():
     # TODO: Generate report using generate_report()
     # TODO: Save to 'output/analysis_report.txt' using save_report()
     # TODO: Print success message
+    import os
+    from generate_health_data import main as generate_data
+    if not os.path.exists("health_data.csv"):
+        generate_data()
     data = load_data("health_data.csv")
     stats = calculate_statistics(data)
     abnormal = find_abnormal_readings(data)
